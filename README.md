@@ -1,7 +1,7 @@
 # NetCoreHealthChecksDemo
 Demo for healthchecks on net core
 
-> healthcheck ui is served on default path `/healthchecks-ui`
+> `healthcheck ui` is served on default path `/healthchecks-ui`
 >
 >> 2 endpoints :
 >> - Liveness (light checks) : accessible on `/live`
