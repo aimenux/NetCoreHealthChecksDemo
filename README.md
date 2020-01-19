@@ -16,4 +16,4 @@ Demo for healthchecks on net core
 >> - appinsights publisher (xabaril nuget)
 >> - appinsights availability publisher (homemade)
 
-**`Tools`** : vs19, net core 3.1, nlog.web 4.9
+**`Tools`** : vs19, webapi, net core 3.1, nlog.web 4.9
