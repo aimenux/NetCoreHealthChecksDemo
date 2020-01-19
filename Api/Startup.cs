@@ -30,6 +30,8 @@ namespace Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddApplicationInsightsTelemetry();
+
             services.AddControllers();
 
             services.AddSwaggerGen(c =>
@@ -39,11 +41,12 @@ namespace Api
 
             services.AddHealthChecks()
                 .AddCheck<PingHealthChecker>(nameof(PingHealthChecker))
-                .AddCheck<RandomHealthChecker>(nameof(RandomHealthChecker));
+                .AddCheck<RandomHealthChecker>(nameof(RandomHealthChecker))
+                .AddCheck<AzureSqlHealthChecker>(nameof(AzureSqlHealthChecker));
 
             services.AddHealthChecksUI(DatabaseName, settings =>
             {
-                settings.SetEvaluationTimeInSeconds(TimeSpan.FromSeconds(10).Seconds);
+                settings.SetEvaluationTimeInSeconds(TimeSpan.FromSeconds(30).Seconds);
                 settings.AddHealthCheckEndpoint(HealthCheckLivenessEndpointName, HealthCheckLivenessEndpointUrl);
                 settings.AddHealthCheckEndpoint(HealthCheckReadinessEndpointName, HealthCheckReadinessEndpointUrl);
             });

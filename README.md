@@ -6,4 +6,9 @@ Demo for healthchecks on net core
 >> - Liveness (light checks) : accessible on `/live`
 >> - Readiness (full checks) : accessible on `/ready`
 
+> azure sql database was created manually using portal
+>> login / user are created with tsql commands :
+>> - CREATE LOGIN YourLogin WITH PASSWORD = 'YourPass';
+>> - CREATE USER YourUser FOR LOGIN YourLogin;
+
 **`Tools`** : vs19, net core 3.1, nlog.web 4.9
