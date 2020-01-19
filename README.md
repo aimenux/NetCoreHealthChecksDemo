@@ -7,6 +7,11 @@ Demo for healthchecks on net core
 >> - Liveness (light checks) : accessible on `/live`
 >> - Readiness (full checks) : accessible on `/ready`
 >
+>> 3 healthcheck checkers :
+>> - Ping checker
+>> - Random checker
+>> - Azure sql checker
+>
 >> 2 healthcheck publishers :
 >> - appinsights publisher (xabaril nuget)
 >> - appinsights availability publisher (homemade)
