@@ -1,5 +1,6 @@
 using System;
 using Api.HealthCheckers;
+using Api.HealthPublishers;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -42,7 +43,9 @@ namespace Api
             services.AddHealthChecks()
                 .AddCheck<PingHealthChecker>(nameof(PingHealthChecker))
                 .AddCheck<RandomHealthChecker>(nameof(RandomHealthChecker))
-                .AddCheck<AzureSqlHealthChecker>(nameof(AzureSqlHealthChecker));
+                .AddCheck<AzureSqlHealthChecker>(nameof(AzureSqlHealthChecker))
+                .AddApplicationInsightsAvailabilityPublisher()
+                .AddApplicationInsightsPublisher();
 
             services.AddHealthChecksUI(DatabaseName, settings =>
             {
