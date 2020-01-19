@@ -10,10 +10,5 @@ Demo for healthchecks on net core
 >> 2 healthcheck publishers :
 >> - appinsights publisher (xabaril nuget)
 >> - appinsights availability publisher (homemade)
->
-> azure sql database was created manually using portal
->> login / user are created with tsql commands :
->> - CREATE LOGIN YourLogin WITH PASSWORD = 'YourPass';
->> - CREATE USER YourUser FOR LOGIN YourLogin;
 
 **`Tools`** : vs19, net core 3.1, nlog.web 4.9
