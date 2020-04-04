@@ -1,5 +1,8 @@
+![.NET Core](https://github.com/aimenux/NetCoreHealthChecksDemo/workflows/.NET%20Core/badge.svg)
 # NetCoreHealthChecksDemo
+```
 Demo for healthchecks on net core
+```
 
 > `healthcheck ui` is served on default path `/healthchecks-ui`
 >
