@@ -1,4 +1,3 @@
-using System;
 using Api.HealthCheckers;
 using Api.HealthPublishers;
 using HealthChecks.UI.Client;
@@ -16,11 +15,13 @@ namespace Api
     {
         private const string ApiVersion = "v1";
         private const string ApiName = "NetCoreHealthChecksDemo";
-        private const string DatabaseName = "HealthChecksSqlLiteDb";
         private const string HealthCheckLivenessEndpointUrl = @"/live";
         private const string HealthCheckLivenessEndpointName = @"Liveness";
         private const string HealthCheckReadinessEndpointUrl = @"/ready";
         private const string HealthCheckReadinessEndpointName = @"Readiness";
+
+        private const int MaximumHistoryEntries = 30;
+        private const int EvaluationTimeInSeconds = 30;
 
         public Startup(IConfiguration configuration)
         {
@@ -47,12 +48,13 @@ namespace Api
                 .AddApplicationInsightsAvailabilityPublisher()
                 .AddApplicationInsightsPublisher();
 
-            services.AddHealthChecksUI(DatabaseName, settings =>
+            services.AddHealthChecksUI(settings =>
             {
-                settings.SetEvaluationTimeInSeconds(TimeSpan.FromSeconds(30).Seconds);
+                settings.SetEvaluationTimeInSeconds(EvaluationTimeInSeconds);
+                settings.MaximumHistoryEntriesPerEndpoint(MaximumHistoryEntries);
                 settings.AddHealthCheckEndpoint(HealthCheckLivenessEndpointName, HealthCheckLivenessEndpointUrl);
                 settings.AddHealthCheckEndpoint(HealthCheckReadinessEndpointName, HealthCheckReadinessEndpointUrl);
-            });
+            }).AddInMemoryStorage();
         }
 
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
