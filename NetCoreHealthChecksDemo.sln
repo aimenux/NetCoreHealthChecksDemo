@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1F19B654-E258-48A6-AA49-E0837EDF51FB}"
 	ProjectSection(SolutionItems) = preProject
+		AddRolesToHealthChecksUser.sql = AddRolesToHealthChecksUser.sql
 		.github\workflows\ci.yml = .github\workflows\ci.yml
 		README.md = README.md
 	EndProjectSection

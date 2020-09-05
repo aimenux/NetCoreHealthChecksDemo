@@ -1,3 +1,4 @@
+using Api.Extensions;
 using Api.HealthCheckers;
 using Api.HealthPublishers;
 using HealthChecks.UI.Client;
@@ -30,7 +31,7 @@ namespace Api
 
         public IConfiguration Configuration { get; }
 
-        public static void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplicationInsightsTelemetry();
 
@@ -54,7 +55,7 @@ namespace Api
                 settings.MaximumHistoryEntriesPerEndpoint(MaximumHistoryEntries);
                 settings.AddHealthCheckEndpoint(HealthCheckLivenessEndpointName, HealthCheckLivenessEndpointUrl);
                 settings.AddHealthCheckEndpoint(HealthCheckReadinessEndpointName, HealthCheckReadinessEndpointUrl);
-            }).AddInMemoryStorage();
+            }).AddUiStorageProvider(Configuration);
         }
 
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
